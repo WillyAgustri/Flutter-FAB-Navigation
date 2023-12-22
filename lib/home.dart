@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
               height: 60,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                children: <Widget>[
                   Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     MaterialButton(
                       minWidth: 40,
@@ -61,6 +61,30 @@ class _HomeState extends State<Home> {
                               'Dashboard',
                               style: TextStyle(
                                   color: currentTab == 0
+                                      ? Colors.blue
+                                      : Colors.grey),
+                            )
+                          ]),
+                    ),
+                    MaterialButton(
+                      minWidth: 40,
+                      onPressed: () {
+                        setState(() {
+                          currentScreen = Chat();
+                          currentTab = 1;
+                        });
+                      },
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.chat,
+                                color: currentTab == 1
+                                    ? Colors.blue
+                                    : Colors.grey),
+                            Text(
+                              'Chat',
+                              style: TextStyle(
+                                  color: currentTab == 1
                                       ? Colors.blue
                                       : Colors.grey),
                             )
