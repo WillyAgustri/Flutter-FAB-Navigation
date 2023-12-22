@@ -34,9 +34,9 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
+          shape: const CircularNotchedRectangle(),
           notchMargin: 10,
-          child: Container(
+          child: SizedBox(
               height: 60,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentScreen = Dashboard();
+                          currentScreen = const Dashboard();
                           currentTab = 0;
                         });
                       },
@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentScreen = Chat();
+                          currentScreen = const Chat();
                           currentTab = 1;
                         });
                       },
@@ -89,8 +89,37 @@ class _HomeState extends State<Home> {
                                       : Colors.grey),
                             )
                           ]),
-                    )
-                  ])
+                    ),
+                  ]),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      MaterialButton(
+                        minWidth: 40,
+                        onPressed: () {
+                          setState(() {
+                            currentScreen = const Setting();
+                            currentTab = 3;
+                          });
+                        },
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.settings,
+                                  color: currentTab == 3
+                                      ? Colors.blue
+                                      : Colors.grey),
+                              Text(
+                                'Settings',
+                                style: TextStyle(
+                                    color: currentTab == 3
+                                        ? Colors.blue
+                                        : Colors.grey),
+                              )
+                            ]),
+                      ),
+                    ],
+                  )
                 ],
               ))),
     );
