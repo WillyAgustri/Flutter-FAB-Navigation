@@ -54,8 +54,16 @@ class _HomeState extends State<Home> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.dashboard,
-                                color:
-                                    currentTab == 0 ? Colors.blue : Colors.grey)
+                                color: currentTab == 0
+                                    ? Colors.blue
+                                    : Colors.grey),
+                            Text(
+                              'Dashboard',
+                              style: TextStyle(
+                                  color: currentTab == 0
+                                      ? Colors.blue
+                                      : Colors.grey),
+                            )
                           ]),
                     )
                   ])
