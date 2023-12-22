@@ -1,0 +1,66 @@
+import 'package:flutter/material.dart';
+import 'package:navigation_flutter/page/chat.dart';
+import 'package:navigation_flutter/page/dashboard.dart';
+import 'package:navigation_flutter/page/profile.dart';
+import 'package:navigation_flutter/page/setting.dart';
+
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int currentTab = 0;
+
+  final List<Widget> screens = [
+    const Chat(),
+    const Profile(),
+    const Setting(),
+    const Dashboard(),
+  ];
+
+  final PageStorageBucket bucket = PageStorageBucket();
+  Widget currentScreen = const Dashboard();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageStorage(bucket: bucket, child: currentScreen),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {},
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          notchMargin: 10,
+          child: Container(
+              height: 60,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    MaterialButton(
+                      minWidth: 40,
+                      onPressed: () {
+                        setState(() {
+                          currentScreen = Dashboard();
+                          currentTab = 0;
+                        });
+                      },
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.dashboard,
+                                color:
+                                    currentTab == 0 ? Colors.blue : Colors.grey)
+                          ]),
+                    )
+                  ])
+                ],
+              ))),
+    );
+  }
+}
